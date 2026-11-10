@@ -1,0 +1,13 @@
+# dependencies
+node_modules/
+
+# logs and local output
+*.log
+*.tgz
+
+# editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

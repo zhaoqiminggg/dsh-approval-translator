@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Approval Translator",
+    "description": "Adds an \"Explain this action\" button under the permission approval card. One click spells out, in plain language, what the action does, which files it touches, whether it changes or deletes anything, what the privacy risk is, and whether to allow it."
+  }
+}
