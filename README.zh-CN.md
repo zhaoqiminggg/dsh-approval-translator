@@ -30,10 +30,11 @@
 
 ## 2. 装它
 
-**在软件里装（推荐）**：打开「插件」页 → 「添加插件」，把下面这个地址粘进去：
+**在软件里装（推荐）**：打开「插件」页 → 「添加插件」，粘下面任意一个都行：
 
 ```
-https://github.com/zhaoqiminggg/dsh-approval-explainer
+dsh-approval-translator
+https://github.com/zhaoqiminggg/dsh-approval-translator
 ```
 
 装完按 `Ctrl+R` 刷新一次页面。
@@ -41,13 +42,17 @@ https://github.com/zhaoqiminggg/dsh-approval-explainer
 **用命令行装**（把 `<你的 profile>` 换成实际在跑的那个，桌面版是 `desktop`，普通 `dsh web` 是 `web`）：
 
 ```sh
-dsh plugin --profile <你的 profile> add github:zhaoqiminggg/dsh-approval-explainer
+# 走 npm，最快
+dsh plugin --profile <你的 profile> add dsh-approval-translator
+
+# 或者直接走 GitHub 源码
+dsh plugin --profile <你的 profile> add github:zhaoqiminggg/dsh-approval-translator
 ```
 
 **从本地目录装**（自己改代码时用）：
 
 ```sh
-dsh plugin --profile <你的 profile> add /本地目录的绝对路径/dsh-approval-explainer
+dsh plugin --profile <你的 profile> add /本地目录的绝对路径/dsh-approval-translator
 ```
 
 ---

@@ -15,13 +15,13 @@
  * 3. 不花钱不耗时：只有用户点按钮才调用模型，同一条操作解释过一次就复用。
  */
 
-export const name = 'dsh-approval-explainer'
+export const name = 'dsh-approval-translator'
 
 // commands：注册后台命令；llm：用当前会话正在用的那个模型来生成解释。
 export const inject = ['commands', 'llm']
 
 /** 界面与后台之间的内部命令名。 */
-const COMMAND = 'dsh-approval-explainer-explain'
+const COMMAND = 'dsh-approval-translator-explain'
 
 /** 原始参数最多带多少字进模型（防止一条巨型 JSON 撑爆 prompt）。 */
 const MAX_ARGS_CHARS = 6000

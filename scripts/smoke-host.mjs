@@ -95,7 +95,7 @@ async function run({ label, mode, firstEmpty, rawInput }) {
   const { llm, stats } = makeLlm({ mode, firstEmpty })
   const { ctx, handlers } = makeCtx(llm)
   apply(ctx)
-  const handler = handlers.get('dsh-approval-explainer-explain').handler
+  const handler = handlers.get('dsh-approval-translator-explain').handler
   const result = await handler({
     commandId: 'c1',
     agent: { id: 'session-1', session: { requestHeader: () => ({ config: { provider: 'deepseek', model: 'deepseek-chat' } }) } },

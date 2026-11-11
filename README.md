@@ -24,10 +24,11 @@ The approval card itself is untouched: **Reject**, **Allow once**, `Enter`, `Esc
 
 ## Install
 
-**In the app** — open the **Plugins** page and use **Add plugin** (`添加插件`). Paste either the repository address or the package name:
+**In the app** — open the **Plugins** page, choose **Add plugin** (`添加插件`), and paste one of:
 
 ```
-https://github.com/zhaoqiminggg/dsh-approval-explainer
+dsh-approval-translator
+https://github.com/zhaoqiminggg/dsh-approval-translator
 ```
 
 Then refresh the page (`Ctrl+R`) once.
@@ -35,7 +36,11 @@ Then refresh the page (`Ctrl+R`) once.
 **With the CLI:**
 
 ```sh
-dsh plugin --profile <your-profile> add github:zhaoqiminggg/dsh-approval-explainer
+# from npm — fastest, no build step
+dsh plugin --profile <your-profile> add dsh-approval-translator
+
+# or straight from GitHub source
+dsh plugin --profile <your-profile> add github:zhaoqiminggg/dsh-approval-translator
 ```
 
 (Pick the profile your host actually runs — `desktop` for DSH Desktop, `web` for a plain `dsh web`.)
@@ -43,7 +48,7 @@ dsh plugin --profile <your-profile> add github:zhaoqiminggg/dsh-approval-explain
 **From a local checkout** — install the directory itself, which is also the development workflow:
 
 ```sh
-dsh plugin --profile <your-profile> add /absolute/path/to/dsh-approval-explainer
+dsh plugin --profile <your-profile> add /absolute/path/to/dsh-approval-translator
 ```
 
 ## Using it
@@ -70,7 +75,7 @@ The button only exists while an approval is pending; in full-access mode there i
 Two halves, no build step, no dependencies.
 
 **Host half — `index.js`**
-Registers one internal session command, `dsh-approval-explainer-explain`, hidden from the slash-command list and from the chat log. On invocation it resolves the correlated `tool/call` event from the session log by `callId` — and only when no `callId` is supplied does it fall back to the newest call of the same tool, so a mismatched id can never make it explain a different operation. It then builds a prompt from the tool name, the raw arguments and the user's last message, and streams the model:
+Registers one internal session command, `dsh-approval-translator-explain`, hidden from the slash-command list and from the chat log. On invocation it resolves the correlated `tool/call` event from the session log by `callId` — and only when no `callId` is supplied does it fall back to the newest call of the same tool, so a mismatched id can never make it explain a different operation. It then builds a prompt from the tool name, the raw arguments and the user's last message, and streams the model:
 
 - `llm.prepareCall(...)` with a `configure` callback that picks `model.reasoning.efforts[0]`, so the cheapest available effort is used; falls back to plain `llm.stream` if preparation fails;
 - harvests both `text-delta` and `block-end` text, so adapters that only deliver complete blocks still work;

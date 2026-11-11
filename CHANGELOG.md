@@ -24,6 +24,11 @@ First public release.
 - Fallback approval card and an error boundary, so a failure in the explanation
   UI never blocks the approval decision.
 
+### Changed
+
+- Package and repository renamed to **dsh-approval-translator**; the earlier
+  `dsh-approval-explainer` npm package is deprecated and points here.
+
 ### Notes
 
 - Explanations are generated in Simplified Chinese.

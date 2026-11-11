@@ -17,7 +17,7 @@
  */
 
 window.__ModuleLoader__.load({
-  id: 'dsh-approval-explainer',
+  id: 'dsh-approval-translator',
   factory: (require) => {
     const module = { exports: {} }
     const exports = module.exports
@@ -30,8 +30,8 @@ window.__ModuleLoader__.load({
     const h = React.createElement
 
     const NS = 'approval-explainer'
-    const COMMAND = 'dsh-approval-explainer-explain'
-    const STYLE_TAG = 'dsh-approval-explainer/Explain.css'
+    const COMMAND = 'dsh-approval-translator-explain'
+    const STYLE_TAG = 'dsh-approval-translator/Explain.css'
     /** 已解释过的操作缓存，切换/重渲染时不重复调用模型。 */
     const RESULT_CACHE = new Map()
     const RESULT_CACHE_LIMIT = 40
@@ -120,7 +120,7 @@ window.__ModuleLoader__.load({
       const existing = document.querySelector(`style[data-plugin-css=${JSON.stringify(STYLE_TAG)}]`)
       if (existing) return () => {}
       const tag = document.createElement('style')
-      tag.dataset.plugin = 'dsh-approval-explainer'
+      tag.dataset.plugin = 'dsh-approval-translator'
       tag.dataset.pluginCss = STYLE_TAG
       tag.textContent = css
       document.head.appendChild(tag)
