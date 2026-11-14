@@ -1,7 +1,7 @@
 {
   "name": "dsh-approval-translator",
-  "version": "1.0.0",
-  "description": "Adds an \"Explain this action\" button under the DeepSeek Harness permission approval card: one click spells out, in plain language, what the action does, which files it touches, whether it changes or deletes anything, what the privacy risk is, and whether to allow it.",
+  "version": "1.0.1",
+  "description": "Adds an Explain this action button under the DeepSeek Harness permission approval dialog (审批弹窗) that answers in plain Chinese: what the operation does, which files it touches, whether it modifies or deletes anything, the privacy risk, and an allow or reject recommendation.",
   "keywords": [
     "dsh",
     "dsh-plugin",
@@ -10,7 +10,11 @@
     "permission",
     "explain",
     "plain-language",
-    "accessibility"
+    "accessibility",
+    "approval-dialog",
+    "approval-explainer",
+    "risk-explainer",
+    "plain-chinese"
   ],
   "license": "MIT",
   "author": "zhaoqiminggg",

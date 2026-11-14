@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="580" viewBox="0 0 900 580" fill="none" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif">
   <rect width="900" height="580" fill="#f7f8fa"/>
-  <text x="60" y="30" fill="#9aa0a6" font-size="12">审批卡片 + 解释按钮（示意图 / illustration）</text>
+  <text x="60" y="30" fill="#9aa0a6" font-size="12">审批弹窗 + 解释按钮（示意图 / illustration）</text>
 
   <!-- approval card -->
   <rect x="60" y="46" width="780" height="152" rx="14" fill="#ffffff" stroke="#f0d9a8"/>

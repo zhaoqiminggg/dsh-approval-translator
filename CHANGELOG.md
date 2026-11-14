@@ -4,6 +4,18 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] — 2026-11-14
+
+### Changed
+
+- The popup is now called an **approval dialog** (审批弹窗) instead of an
+  approval card, in both READMEs.
+- Both READMEs now name the terms people actually search for — 审批弹窗、
+  审批解释、审批汉化、风险解释 — and the English one lists the matching English
+  phrases.
+- `package.json` description and keywords updated so npm search can match those
+  terms too.
+
 ## [1.0.0] — 2026-11-10
 
 First public release.

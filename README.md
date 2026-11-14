@@ -2,17 +2,19 @@
 
 [English](README.md) · [简体中文](README.zh-CN.md)
 
-A [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) plugin that puts an **Explain this action** button under the permission approval card — and answers it in plain language.
+A [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) plugin that puts an **Explain this action** button under the permission approval dialog — and answers it in plain language.
+
+> Also searched as: **approval dialog explainer, approval explainer, risk explainer, approval translator**.
 
 ![Approval Translator](docs/preview.svg)
 
 ## Why this exists
 
-When your permission mode is anything but full access, DSH asks before the agent runs a command, edits a file, or calls a privileged tool. The card shows a tool name and the raw argument: a shell command, a JSON blob, a filesystem path.
+When your permission mode is anything but full access, DSH asks before the agent runs a command, edits a file, or calls a privileged tool. The dialog shows a tool name and the raw argument: a shell command, a JSON blob, a filesystem path.
 
 If you are not a programmer, that is exactly the moment you have to approve something you cannot read — and the safe answer is "reject", which stalls the work.
 
-This plugin adds one button below the card. Clicking it sends that operation to the model of the current session and renders a short explanation:
+This plugin adds one button below the dialog. Clicking it sends that operation to the model of the current session and renders a short explanation:
 
 - what the action does, in one line;
 - which files, folders or applications it touches (long paths translated into "the place where {app} keeps its data");
@@ -20,7 +22,7 @@ This plugin adds one button below the card. Clicking it sends that operation to 
 - the privacy risk (accounts, passwords, chat history, databases, photos);
 - a risk level (low / medium / high) plus an allow/reject recommendation.
 
-The approval card itself is untouched: **Reject**, **Allow once**, `Enter`, `Esc`, focus handling and accessibility still come from DSH's own component. This plugin only appends content below it.
+The approval dialog itself is untouched: **Reject**, **Allow once**, `Enter`, `Esc`, focus handling and accessibility still come from DSH's own component. This plugin only appends content below it.
 
 ## Install
 
@@ -54,17 +56,17 @@ dsh plugin --profile <your-profile> add /absolute/path/to/dsh-approval-translato
 ## Using it
 
 1. Switch the permission control in the composer to anything that asks before acting.
-2. Let the agent run a tool. The approval card appears as usual.
-3. Click **Explain this action** under the card.
+2. Let the agent run a tool. The approval dialog appears as usual.
+3. Click **Explain this action** under the dialog.
 4. A few seconds later the explanation expands in place. Click again to re-explain.
 
-The button only exists while an approval is pending; in full-access mode there is no card and nothing to explain.
+The button only exists while an approval is pending; in full-access mode there is no dialog and nothing to explain.
 
 ## Cost, latency and behaviour
 
 - **Nothing is sent until you click.** No background requests, no polling.
 - One explanation = one model call with the current session's model. No extra configuration, no API key.
-- Each `callId` is cached on both the host and the client: clicking twice on the same card reuses the answer.
+- Each `callId` is cached on both the host and the client: clicking twice on the same dialog reuses the answer.
 - The request is bounded: 45 s per attempt, at most two attempts, reasoning effort pinned to the lowest level the model advertises (thinking-heavy models otherwise spend the whole output budget before writing anything).
 - If the model returns no text at all, the plugin retries once and then explains which case it was.
 
@@ -96,14 +98,14 @@ ctx.slots.inject('conversation.composer', () => ctx.slots.register({
 }, ApprovalExplainer))
 ```
 
-Inside, the official card is rendered through `props.renderFactorySlot('conversation.approval.card', …)` — the same inputs the shipped panel passes — and the button plus result panel are appended below it, wrapped in an error boundary. If the factory cannot be rendered, a minimal fallback card keeps Reject / Allow once reachable.
+Inside, the official dialog is rendered through `props.renderFactorySlot('conversation.approval.card', …)` — the same inputs the shipped panel passes — and the button plus result panel are appended below it, wrapped in an error boundary. If the factory cannot be rendered, a minimal fallback panel keeps Reject / Allow once reachable.
 
 ## Privacy & safety
 
 - Reads only the tool call already recorded in **your own** session log.
 - Calls the model only on click, using the route your session already uses.
 - No telemetry, no analytics, no files written, no network requests of its own.
-- The approval decision stays entirely with DSH's official card.
+- The approval decision stays entirely with DSH's official dialog.
 
 ## Compatibility
 
