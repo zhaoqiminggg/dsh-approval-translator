@@ -6,7 +6,7 @@ A [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) plugin tha
 
 > Also searched as: **approval dialog explainer, approval explainer, risk explainer, approval translator**.
 
-![Approval Translator](docs/preview.svg)
+![Approval Translator](docs/preview.png)
 
 ## Why this exists
 
